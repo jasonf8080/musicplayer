@@ -12,13 +12,26 @@ modeShiftBtn.addEventListener('click', function(e){
    }
 });
 
+
+//open and close songs list
+const closeListBtn = document.querySelector('.icon-container.close-btn');
+const openListBtn = document.querySelector('.mp-top i');
+
+closeListBtn.addEventListener('click', function(){
+    songListPage.classList.remove('active');
+})
+
+openListBtn.addEventListener('click', function(){
+    songListPage.classList.add('active');
+})
+
 const audio = document.getElementById('audio');
 const image =  document.querySelector('.img-container img');
 const artist = document.querySelector('.song-artist');
 const title = document.querySelector('.song-title');
 const songsListElement = document.querySelector('.song-list-content');
 
-let song = 0;
+let song = 3;
 
 //get songs data from json
 fetch('songs.json')
@@ -30,7 +43,7 @@ fetch('songs.json')
         let songsList = songs.map(song => 
             `<div class="song-list-item">
             <div class="img-container">
-                <img src="https://i1.sndcdn.com/artworks-000114148617-7bjinf-t500x500.jpg">
+                <img src="${song.image}">
             </div>
 
             <div class="song-list-info">
@@ -46,7 +59,7 @@ fetch('songs.json')
             const item = songs[song];
             
             audio.src = `${item.title}.mp4`;
-            image.src = `${item.title}.jpg`;
+            image.src = `${item.image}`;
             artist.textContent = item.artist;
             title.textContent = item.title;
         }

@@ -38,6 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
 }
 
@@ -64,6 +65,7 @@
 .mp-top i{
     color: white;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .mp-top h3{
@@ -156,17 +158,20 @@
 
 .song-list-page{
     position: absolute;
-    top: 0%;
+    top: 100%;
     left: 0;
     width: 100%;
     min-height: 100%;
     background: white;
     color: black;
-    z-index: 10;
     border-radius: 25px;
     padding: 20px;
-    overflow: hidden;
-    transition: background 0.3s;
+    transition: top 0.4s, background 0.3s ease-in;
+
+}
+
+.song-list-page.active{
+    top: 0;
 }
 
 .song-list-page.night-mode{
