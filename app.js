@@ -25,10 +25,14 @@ openListBtn.addEventListener('click', function(){
     songListPage.classList.add('active');
 })
 
+
+
+
 const audio = document.getElementById('audio');
-const image =  document.querySelector('.img-container img');
-const artist = document.querySelector('.song-artist');
-const title = document.querySelector('.song-title');
+const imageElement =  document.querySelector('.img-container img');
+const artistElement = document.querySelector('.song-artist');
+const titleElement = document.querySelector('.song-title');
+
 const songsListElement = document.querySelector('.song-list-content');
 
 let song = 2;
@@ -37,6 +41,7 @@ let song = 2;
 fetch('songs.json')
     .then(res => res.json())
     .then(data => {
+        //dynamically add songs to list
         const songs = data;
         console.log(songs);
 
@@ -52,10 +57,10 @@ fetch('songs.json')
             </div>
         </div>`).join('');
 
-
         songsListElement.innerHTML = songsList;
 
-        function uploadSongInfo(){
+        //add song info to player
+        /*function uploadSongInfo(){
             const item = songs[song];
             
             audio.src = `${item.title}.mp4`;
@@ -64,11 +69,43 @@ fetch('songs.json')
             title.textContent = item.title;
         }
 
-        uploadSongInfo();
+        uploadSongInfo();*/
+
+        //select a song, make song active;
+        const songItems = document.querySelectorAll('.song-list-item');
+
+        songItems.forEach(function(songItem){
+            songItem.addEventListener('click', function(e){
+               if(e.currentTarget = songItem || songItem.children){
+                    activeSongItem = e.currentTarget;
+                   
+                   //change color on active song
+                   songItems.forEach(function(songItem){
+                        songItem.classList.remove('active');
+
+                        activeSongItem.classList.add('active');
+                   })
+
+                   
+                   //when a song is selected from list, update song in player;
+                   const activeSongImg = activeSongItem.children[0].children[0].src;
+
+                   const activeSongTitle = activeSongItem.children[1].children[0].textContent;
+                   const activeSongArtist = activeSongItem.children[1].children[1].textContent;
+
+                   playSelectedSong(activeSongImg, activeSongTitle, activeSongArtist);
+               } 
+            })
+        })
 
 
     })
 
+ function playSelectedSong(img, title, artist){
+     imageElement.src = img;
+     titleElement.textContent = title;
+     artistElement.textContent = artist; 
+ };
 
 const prevBtn = document.querySelector('.prev-btn');
 const playPauseButton = document.querySelector('.play-pause-btn');

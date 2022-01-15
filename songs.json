@@ -1,14 +1,20 @@
 [
     {
-        "image": "https://i1.sndcdn.com/artworks-000114148617-7bjinf-t500x500.jpg",
-        "title": "Selfish",
-        "artist": "BLXST FT. Bino Readeaux"
+        "image": "https://ncsmusic.s3.eu-west-1.amazonaws.com/tracks/000/000/152/1000x0/on-on-feat-daniel-levi-1586947008-oeI24in2Ga.jpg",
+        "title": "On & On",
+        "artist": "Cartoon feat. Daniel Levy"
     },
 
     {
-        "image": "https://i1.sndcdn.com/artworks-000114148617-7bjinf-t500x500.jpg",
-        "title": "First Time",
-        "artist": "ILLENIUM, iann dior"
+        "image": "https://i1.sndcdn.com/artworks-000075145091-45j2ds-t500x500.jpg",
+        "title": "Hope",
+        "artist": "Tobu"
+    },
+
+    {
+        "image": "https://i1.sndcdn.com/artworks-000373494075-x8glva-t500x500.jpg",
+        "title": "Symbolism",
+        "artist": "Electro-Light"
     },
 
     {
@@ -18,7 +24,7 @@
     },
 
     {
-        "image": "https://i1.sndcdn.com/artworks-000114148617-7bjinf-t500x500.jpg",
+        "image": "https://f4.bcbits.com/img/a1980586050_10.jpg",
         "title": "Aftergold",
         "artist": "Big Wild"
     }
