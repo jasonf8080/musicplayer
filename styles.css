@@ -186,18 +186,13 @@
     align-items: center;
     position: relative;
     padding-bottom: 15px;
+    border-bottom: 1px solid rgb(229, 229, 230);
+    border-width: 95%;
+    transition: border-bottom 0.5s;
 }
 
-.song-list-top::after{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 1px;
-    width: 95%;
-    background: rgb(230, 229, 229);
-    margin: 0 auto;
+.song-list-page.night-mode .song-list-top{
+    border-bottom: 1px solid rgb(26, 25, 25);
 }
 
 .icon-container{

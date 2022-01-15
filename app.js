@@ -31,7 +31,7 @@ const artist = document.querySelector('.song-artist');
 const title = document.querySelector('.song-title');
 const songsListElement = document.querySelector('.song-list-content');
 
-let song = 3;
+let song = 2;
 
 //get songs data from json
 fetch('songs.json')
@@ -65,6 +65,8 @@ fetch('songs.json')
         }
 
         uploadSongInfo();
+
+
     })
 
 
