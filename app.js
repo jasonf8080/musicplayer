@@ -35,7 +35,7 @@ const titleElement = document.querySelector('.song-title');
 
 const songsListElement = document.querySelector('.song-list-content');
 
-let song = 2;
+const playPauseButton = document.querySelector('.play-pause-btn');
 
 //get songs data from json
 fetch('songs.json')
@@ -43,7 +43,7 @@ fetch('songs.json')
     .then(data => {
         //dynamically add songs to list
         const songs = data;
-        console.log(songs);
+        //console.log(songs);
 
         let songsList = songs.map(song => 
             `<div class="song-list-item">
@@ -59,55 +59,84 @@ fetch('songs.json')
 
         songsListElement.innerHTML = songsList;
 
-        //add song info to player
-        /*function uploadSongInfo(){
-            const item = songs[song];
-            
-            audio.src = `${item.title}.mp4`;
-            image.src = `${item.image}`;
-            artist.textContent = item.artist;
-            title.textContent = item.title;
-        }
-
-        uploadSongInfo();*/
 
         //select a song, make song active;
         const songItems = document.querySelectorAll('.song-list-item');
 
         songItems.forEach(function(songItem){
             songItem.addEventListener('click', function(e){
-               if(e.currentTarget = songItem || songItem.children){
+               if(e.currentTarget = songItem || songItem.children){//event listener (event bubbled);
                     activeSongItem = e.currentTarget;
                    
-                   //change color on active song
+                   //change color on active song, while keeping others the same
                    songItems.forEach(function(songItem){
                         songItem.classList.remove('active');
-
                         activeSongItem.classList.add('active');
                    })
 
                    
                    //when a song is selected from list, update song in player;
-                   const activeSongImg = activeSongItem.children[0].children[0].src;
-
                    const activeSongTitle = activeSongItem.children[1].children[0].textContent;
-                   const activeSongArtist = activeSongItem.children[1].children[1].textContent;
+    
+                   for(let i = 0; i < songs.length; i++){
+                       if(activeSongTitle === songs[i].title){
 
-                   playSelectedSong(activeSongImg, activeSongTitle, activeSongArtist);
-                   audio.src = `${activeSongTitle}.mp4`;
-                   audio.play();
+                            console.log(songs[i]);
+                            let counter = i;
+                        
+                            playSelectedSong(songs[counter]);
+
+
+                            //shift to next song
+                            const nextBtn = document.querySelector('.next-btn');
+                            nextBtn.addEventListener('click', function(){
+
+                                counter++;
+                               
+                                if(counter > songs.length - 1){
+                                    counter = 0;
+                                }
+
+                                playSelectedSong(songs[counter]);
+                                updateActiveSongInList(songItems, songItems[counter]);
+                            });
+
+
+
+                            //shift to previous song
+                            const prevBtn = document.querySelector('.prev-btn');
+                            prevBtn.addEventListener('click', function(){
+
+                                counter--;
+                               
+                                if(counter < 0){
+                                    counter = songs.length - 1;
+                                }
+
+                                playSelectedSong(songs[counter]);
+                                updateActiveSongInList(songItems, songItems[counter]);
+                            });
+
+                       }
+                   }  
                } 
             })
         })
-
-
     })
 
- function playSelectedSong(img, title, artist){
 
-     imageElement.src = img;
-     titleElement.textContent = title;
-     artistElement.textContent = artist; 
+    
+
+ function playSelectedSong(item){
+
+     imageElement.src = item.image;
+     titleElement.textContent = item.title;
+     artistElement.textContent = item.artist; 
+
+     audio.src = `${item.title}.mp4`;
+     audio.play();
+     playPauseButton.innerHTML = '<i class="fas fa-pause">';
+     playPauseButton.classList.remove('paused');
 
      setTimeout(function(){
         songListPage.classList.remove('active');
@@ -115,46 +144,25 @@ fetch('songs.json')
  };
 
 
-const prevBtn = document.querySelector('.prev-btn');
-const playPauseButton = document.querySelector('.play-pause-btn');
-const nextBtn = document.querySelector('.next-btn');
 
-playPauseButton.addEventListener('click',  playPauseSong)
 
-function playPauseSong(){
-    let playing = playPauseButton.classList.toggle('play');
-    if(playing){
-       audio.play();
-       playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+playPauseButton.addEventListener('click', function(){
+    playPauseButton.classList.toggle('paused');
+
+    if(playPauseButton.classList.contains('paused')){
+        playPauseButton.innerHTML = '<i class="fas fa-play">';
+        audio.pause();
     } else {
-       audio.pause();
-       playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+        playPauseButton.innerHTML = '<i class="fas fa-pause">';
+        audio.play();
     }
-}
-
-function shiftSong(){
-    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-    audio.play();
-}
-
-nextBtn.addEventListener('click', function(){
-    song++;
-
-    if(song > songs.length - 1){
-        song = 0;
-    }
-
-    uploadSongInfo();
-    shiftSong();
 })
 
 
-prevBtn.addEventListener('click', function(){
-    song--;
+function updateActiveSongInList(songItems, item){
+    songItems.forEach(function(songItem){
+        songItem.classList.remove('active');
+        item.classList.add('active');
+    })
+}
 
-    if(song < 0){
-        song = songs.length - 1
-    }
-
-    uploadSongInfo();
-})
