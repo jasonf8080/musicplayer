@@ -94,6 +94,8 @@ fetch('songs.json')
                    const activeSongArtist = activeSongItem.children[1].children[1].textContent;
 
                    playSelectedSong(activeSongImg, activeSongTitle, activeSongArtist);
+                   audio.src = `${activeSongTitle}.mp4`;
+                   audio.play();
                } 
             })
         })
@@ -102,10 +104,12 @@ fetch('songs.json')
     })
 
  function playSelectedSong(img, title, artist){
+
      imageElement.src = img;
      titleElement.textContent = title;
      artistElement.textContent = artist; 
  };
+
 
 const prevBtn = document.querySelector('.prev-btn');
 const playPauseButton = document.querySelector('.play-pause-btn');
