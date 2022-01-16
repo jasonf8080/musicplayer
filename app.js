@@ -108,6 +108,10 @@ fetch('songs.json')
      imageElement.src = img;
      titleElement.textContent = title;
      artistElement.textContent = artist; 
+
+     setTimeout(function(){
+        songListPage.classList.remove('active');
+     }, 600)
  };
 
 
