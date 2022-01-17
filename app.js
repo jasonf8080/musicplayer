@@ -1,8 +1,10 @@
 const modeShiftBtn = document.querySelector('.icon-container.night-mode-icon');
 const songListPage = document.querySelector('.song-list-page');
+const musicPlayerContainer = document.querySelector('.music-player-container');
 
 modeShiftBtn.addEventListener('click', function(e){
    songListPage.classList.toggle('night-mode');
+   musicPlayerContainer.classList.toggle('night-mode');
 
    let nightMode = songListPage.classList.contains('night-mode');
    if(nightMode){
@@ -82,7 +84,7 @@ fetch('songs.json')
                        if(activeSongTitle === songs[i].title){
 
                             console.log(songs[i]);
-                            let counter = i;
+                            let counter = i;//get the index of the matching song
                         
                             playSelectedSong(songs[counter]);
 
@@ -126,7 +128,7 @@ fetch('songs.json')
 
 
     
-
+//update player with selected song,  play that sog
  function playSelectedSong(item){
 
      imageElement.src = item.image;

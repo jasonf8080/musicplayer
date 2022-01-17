@@ -34,9 +34,9 @@
   body{
     height: 100vh;
     max-height: 100vh;
+    min-height: 100vh;
     position: relative;
     background: linear-gradient(to bottom left, #FF9303, #ff488e);
-    /*background: url("https://cdn.dribbble.com/users/470545/screenshots/3249842/sunset-on-a-beach.gif") no-repeat center/cover;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,15 +45,20 @@
 }
 
 .music-player-container{
-    background: rgba(255, 255, 255, 0.2);
+    background: white;
     box-shadow: 0px 0px 5px 0px #c94954;
     padding: 20px 30px;
     width: 400px;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: black;
     position: relative;
+}
+
+.music-player-container.night-mode{
+    background: #2B2434;
+    color: white;
 }
 
 .mp-top{
@@ -65,7 +70,6 @@
 }
 
 .mp-top i{
-    color: white;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -76,7 +80,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
     font-size: 1rem;
 }
   
@@ -104,7 +107,7 @@
 
 
 .progress-bar{
-    background: white;
+    background: #2B2434;
     height: 5px;
     width: 80%;
     margin: 0 auto;
@@ -112,6 +115,10 @@
     border-radius: 2px;
     margin: 0 auto;
     margin-bottom: 15px;
+}
+
+.music-player-container.night-mode .progress-bar{
+    background: white;
 }
 
 .progress-bar::after{
@@ -138,8 +145,11 @@
 .prev-btn, .next-btn{
     border: none;
     background: transparent;
-    color: white;
     font-size: 1.2rem;
+}
+
+.music-player-container.night-mode .prev-btn, .next-btn{
+    color: white;
 }
 
 .play-pause-btn{
@@ -148,7 +158,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 15px 20px;
     border-radius: 50%;
     color: white;
     background: #fd5966;
@@ -156,6 +166,11 @@
     transform: translateY(10px);
 }
 
+
+
+.play-pause-btn.paused{
+    padding: 15px;
+}
 
 
 /*song list page*/
