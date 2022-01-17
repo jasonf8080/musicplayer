@@ -41,7 +41,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border: 5px solid rgb(57, 128, 24);
+
 
 }
 
@@ -301,5 +301,6 @@
         min-width: 100%;
         max-height: 100%;
         min-height: 100%;
+        border-radius: none;
     }
 }
