@@ -297,7 +297,7 @@
 @media(max-width: 600px){
 
     body{
-        height: auto;
+        height: none;
         max-height: none;
         min-height: none;
         overflow: auto;
