@@ -314,6 +314,7 @@
     .song-list-page{
         border-radius: 0px;
         min-height: 100vh;
+        padding-bottom: 30px;
     }
 
 
