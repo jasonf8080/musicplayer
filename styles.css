@@ -146,9 +146,10 @@
     border: none;
     background: transparent;
     font-size: 1.2rem;
+    color: black;
 }
 
-.music-player-container.night-mode .prev-btn, .next-btn{
+.music-player-container.night-mode .prev-btn .next-btn{
     color: white;
 }
 
