@@ -41,6 +41,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border: 5px solid rgb(57, 128, 24);
 
 }
 
@@ -74,13 +75,15 @@
     cursor: pointer;
 }
 
-.mp-top h3{
+.mp-top p{
     text-transform: uppercase;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
   
 .img-container{
@@ -121,8 +124,7 @@
     background: white;
 }
 
-.progress-bar::after{
-    content: '';
+.current-progress{
     position: absolute;
     top: 0;
     left: 0;
@@ -166,7 +168,7 @@
     padding: 15px 20px;
     border-radius: 50%;
     color: white;
-    background: #fd5966;
+    background: linear-gradient(to bottom left, #FF9303, #ff488e);
     margin-bottom: 25px;
     transform: translateY(10px);
 }
@@ -182,7 +184,7 @@
 .song-list-page{
     position: absolute;
     top: 0;
-    transform: translateY(200%);
+    transform: translateX(-300%);
     left: 0;
     width: 100%;
     min-height: 100%;
@@ -193,11 +195,16 @@
     padding: 20px;
     transition: transform 0.5s, background 0.3s ease-in;
     overflow: auto;
+}
 
+.my-songs-title{
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .song-list-page.active{
-    transform: translateY(0px)
+    transform: translateY(0px);
 }
 
 .song-list-page.night-mode{

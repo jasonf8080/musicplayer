@@ -12,8 +12,8 @@
 <body>
     <div class="music-player-container night-mode"><!--create music player, then position songs list absolute within, with height being 100%-->
         <div class="mp-top">
-            <i class="lni lni-menu"></i>
-            <h3>Now Playing</h3>
+            <i class="fas fa-chevron-left"></i>
+            <p>Now Playing</p>
         </div>
 
         <div class="img-container">
@@ -26,11 +26,13 @@
             <p class="song-artist">-</p>
         </div>
 
-        <div class="progress-bar"></div>
+        <div class="progress-bar">
+            <div class="current-progress"></div>
+        </div>
 
         <div class="buttons-div">
             <button class="prev-btn"><i class="fas fa-backward"></i></button>
-            <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+            <button class="play-pause-btn"><i class="fas fa-pause"></i></button>
             <button class="next-btn"><i class="fas fa-forward"></i></button>
         </div>
 
@@ -40,10 +42,10 @@
                     <i class="fas fa-close"></i>
                 </div>
 
-                 <h3>My Songs</h3>
+                 <h3 class="my-songs-title">My Songs</h3>
 
                 <div class="icon-container night-mode-icon">
-                    <i class="lni lni-night"></i>
+                    <i class="lni lni-sun"></i>
                 </div>
             </div>
 
